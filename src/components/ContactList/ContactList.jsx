@@ -1,30 +1,48 @@
-import { useSelector } from 'react-redux';
-import { getFilter } from 'store/Contacts/filterSlicer';
-import { useGetContactsQuery } from 'store/Contacts/contactsSlice';
-import { ContactElement } from "./ContactElement/ContactElement";
-import { List } from "./ContactList.styled";
+import {
+  ContactListList,
+  ContactListItem,
+  ContactsListText,
+} from './ContactList.styled';
+import { Button } from 'components/common/Button.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  getCurrentContacts,
+  deleteCurrentContact,
+} from 'store/contacts/contactsOperations';
+import { getItems, getFilter } from 'store/contacts/contactsSelectors';
+import { useEffect } from 'react';
 
-export const ContactList = ()  => {
-  const { data: contacts } = useGetContactsQuery();
+export const ContactList = () => {
   const filter = useSelector(getFilter);
-  const filterContacts = contacts?.filter(contact => 
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
- 
-  return (
-    <List >
-      {contacts &&
-        filterContacts.map(({ id, name, phone }) => (
-        
-        <ContactElement
-          key={id}
-          id={id}
-          name={name}
-          phone={phone}
-          
-        />
-      ))}
-    </List>
-  )
-};
+  const items = useSelector(getItems);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getCurrentContacts());
+  }, [dispatch]);
+
+  const deleteItems = id => {
+    dispatch(deleteCurrentContact(id));
+  };
+
+  const normalizeContact = filter.toLowerCase();
+  const filteredContacts = items.filter(item =>
+    item.name.toLowerCase().includes(normalizeContact)
+  );
+
+  return (
+    <ContactListList>
+      {filteredContacts.map(({ id, name, number }) => (
+        <ContactListItem key={id}>
+          <ContactsListText>
+            <span>{name}: </span>
+            <span>{number}</span>
+          </ContactsListText>
+          <Button type="button" onClick={() => deleteItems(id)}>
+            Delete
+          </Button>
+        </ContactListItem>
+      ))}
+    </ContactListList>
+  );
+};

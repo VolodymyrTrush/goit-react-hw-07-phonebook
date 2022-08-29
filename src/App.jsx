@@ -1,22 +1,30 @@
-
-import { ContactForm } from "./components/ContactForm/ContactForm";
-import { ContactList } from "./components/ContactList/ContactList";
-import { Filter } from "./components/Filter/Filter";
-import { Box } from "./components/Box";
-import { Title } from "./components/Title";
-import { Subtitle } from "./components/Subtitle";
+import { ContactForm } from 'components/Form/Form';
+import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
+import { Container } from 'components/common/Container.styled';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
 
   return (
-    <Box ml={256} >
-      <Title>Phonebook</Title>
+    <Container>
+      <h1>Phonebook</h1>
       <ContactForm />
-
-      <Subtitle>Contacts</Subtitle>
+      <h2>Contacts</h2>
       <Filter />
-        
       <ContactList />
-    </Box>
-  )
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </Container>
+  );
 };

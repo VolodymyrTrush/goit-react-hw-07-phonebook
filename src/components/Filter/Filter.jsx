@@ -1,23 +1,25 @@
+import { FilterLabelTitle, FilterFormLabel, FilteInput } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { Label, Input } from "./Filter.styled";
-import { changeFilter, getFilter } from 'store/Contacts/filterSlicer';
+import { filteredContacts } from 'store/contacts/contactsActions';
+import { getFilter } from 'store/contacts/contactsSelectors';
 
 export const Filter = () => {
-  const filter = useSelector(getFilter)
-  const dispatch = useDispatch()
-  
+  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  const handleFilter = e => {
+    dispatch(filteredContacts(e.target.value));
+  };
+
   return (
-    <Label htmlFor='inputFilter'>
-      Find contacts by name
-      <Input
-        name="filter"
+    <FilterFormLabel>
+      <FilterLabelTitle>Find contacts by name:</FilterLabelTitle>
+      <FilteInput
         type="text"
+        placeholder="Enter name"
         value={filter}
-        onChange={(e) => dispatch(changeFilter(e.target.value))}
+        onChange={handleFilter}
       />
-    </Label>
-  )
+    </FilterFormLabel>
+  );
 };
-
-
-
