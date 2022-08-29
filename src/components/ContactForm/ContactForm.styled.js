@@ -34,6 +34,7 @@ export const Button = styled.button`
     font-size: 16px;
 :hover {
     background: rgb(175, 175, 175);
+    }
 `;
 
 export const ErrorText = styled.p`
