@@ -1,5 +1,5 @@
 
-import {  useAddContactMutation, useGetContactsQuery } from 'store/contactsSlice';
+import {  useAddContactMutation, useGetContactsQuery } from 'store/Contacts/contactsSlice';
 import { Formik, Form, ErrorMessage  } from 'formik';
 import * as Yup from 'yup';
 import { Button, Label, Input, ErrorText } from "./ContactForm.styled";

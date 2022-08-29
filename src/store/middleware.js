@@ -1,4 +1,4 @@
-import { contactsApi } from './contactsSlice';
+import { contactsApi } from './Contacts/contactsSlice';
 
 export const  middleware = getDefaultMiddleware => [
     ...getDefaultMiddleware(),

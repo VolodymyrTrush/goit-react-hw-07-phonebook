@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Label, Input } from "./Filter.styled";
-import { changeFilter, getFilter } from 'store/filterSlicer';
+import { changeFilter, getFilter } from 'store/Contacts/filterSlicer';
 
 export const Filter = () => {
   const filter = useSelector(getFilter)

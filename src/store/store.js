@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import filter from './filterSlicer';
-import { contactsApi } from './contactsSlice';
+import filter from './Contacts/filterSlicer';
+import { contactsApi } from './Contacts/contactsSlice';
 import { middleware } from './middleware';
 
 export const store = configureStore({
@@ -11,4 +11,3 @@ export const store = configureStore({
 
   middleware,
 });
-

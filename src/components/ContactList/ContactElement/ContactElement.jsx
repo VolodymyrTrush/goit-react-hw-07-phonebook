@@ -1,6 +1,6 @@
 
 import { Item, Button } from "./ContactElement.styled";
-import { useDeleteContactMutation } from 'store/contactsSlice';
+import { useDeleteContactMutation } from 'store/Contacts/contactsSlice';
 
 export const ContactElement = ({  id, name, phone  }) => {
   const [deleteContact] = useDeleteContactMutation();

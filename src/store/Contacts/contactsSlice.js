@@ -1,23 +1,5 @@
-// import { createSlice } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_URL } from 'constants/api';
-
-// export const filterSlice = createSlice({
-//   name: 'filter',
-//   initialState: '',
-//   reducers: {
-//     changeFilter: (state, action) => action.payload.toLowerCase(),
-//   },
-// });
-
-// export default filterSlice.reducer;
-
-// // Actions
-// export const { changeFilter } = filterSlice.actions;
-
-// // Selectors
-// export const getFilter = state => state.filter;
-
 
 export const contactsApi = createApi({
   reducerPath: 'contacts',
